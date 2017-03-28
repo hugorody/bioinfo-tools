@@ -9,7 +9,7 @@ my $fasta = "";
 my $query = "";
 
 my $utils = 'http://www.ncbi.nlm.nih.gov/entrez/eutils/';
-my $dbase = 'nucleotide';
+my $dbase = 'nucleotide';      #or 'protein'
 my $reply = 'fasta';
 
 system ( "clear" );
