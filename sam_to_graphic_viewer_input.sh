@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/sh
 #usage: sh sam_to_graphic_viewer_input.sh reference.fasta file.sam
 #Generate required inputs for the visualization of NGS assambly in Tablet software https://ics.hutton.ac.uk/tablet/download-tablet/
 
