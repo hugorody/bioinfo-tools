@@ -10,7 +10,7 @@ columnscsv = [] #list of columns keys
 for i in set1: #read the keys of each columns in dataframe
     columnscsv.append(i) #append to a list
 
-for index, row in set1.iterrows(): #read dataframe
+for index, row in set1.iterrows(): #iterate over rows of pandas dataframe
     valuesprotclass = []
     for i in columnscsv[1:]: #for each column starting in 1, 
         valuesprotclass.append(str(row[i])) #append values in dataframe columns to a list as string
