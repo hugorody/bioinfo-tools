@@ -8,7 +8,7 @@ fileFAS = sys.argv[2] #fasta file
 
 #create a list IDS
 listIDS = []
-with open(fileIDS) as set1:
+with open(fileIDS,"r") as set1:
     for i in set1:
         i = i.rstrip()
         listIDS.append(i)
