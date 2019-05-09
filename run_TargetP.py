@@ -6,12 +6,11 @@ import subprocess
 from Bio import SeqIO
 
 outputname = "file.targetP"
+filefasta = "file.fasta"
 
 targetPdic = {}
 seqs = []
-with open("file.fasta","r") as set1:
-#with open("test/one.fsa","r") as set1:
-    #for each sequence in fasta file
+with open(filefasta,"r") as set1:
     for j in SeqIO.parse(set1,"fasta"):
         seqID = str(j.id)
         seq = str(j.seq)
