@@ -1,8 +1,16 @@
 #!/usr/bin/python3
 
 import numpy as np
+from Bio import SeqIO
 
-blastinput = "input.blastn"
+fastainput = "file.fas"
+blastinput = "blast_output.txt"
+
+seqsize = {}
+with open(fastainput,"r") as set2:
+    for i in SeqIO.parse(set2, "fasta"):
+        seqsize[i.id] = len(str(i.seq))
+
 
 besthit = {}
 with open(blastinput,"r") as set1:
@@ -13,19 +21,18 @@ with open(blastinput,"r") as set1:
         subje = i[1]
         ident = float(i[2])
         align = float(i[3])
+        startquery = int(i[6])
+        endquery = int(i[7])
+        cov = int(align * 100) / seqsize[query] #parameter given in % of query length
         evalu = float(i[10])
 
         if query != subje:
 
             if query not in besthit:
-                besthit[query] = [subje,ident,align,evalu]
+                besthit[query] = [subje,ident,align,cov,evalu]
             else:
-                if ident > besthit[query][1]:
-                    if align > besthit[query][2]:
-                        besthit[query] = [subje,ident,align,evalu]
-                else:
-                    if align > besthit[query][2] and evalu < besthit[query][3]:
-                        besthit[query] = [subje,ident,align,evalu]
+                if ident >= besthit[query][1] and align > besthit[query][2] and cov > besthit[query][3]:
+                        besthit[query] = [subje,ident,align,cov,evalu]
 
 meanidentity = []
 meanalignmen = []
