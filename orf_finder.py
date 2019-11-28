@@ -9,7 +9,6 @@ try:
 except IOError:
     print ("File doesn't exist!")
 
-
 #FUNCTION START
 def orfFINDER(dna,frame):
     
@@ -19,8 +18,7 @@ def orfFINDER(dna,frame):
     stop_positions = []
     num_starts=0
     num_stops=0
-    
-    
+   
     for i in range(frame,len(dna),3):
         codon=dna[i:i+3].lower()
         if codon in start_codon:
@@ -72,16 +70,10 @@ def orfFINDER(dna,frame):
                     orffound[nameorf] = position_start,position_stop,sizeorf,frame
                         
                 else:
-                    
                     pass
-    
-    else:
-        
+    else:  
         orfs = False
-
     return orffound
-#FUNCTION END
-
 
 #READ FASTA FILE AND SAVE HEADERS AND SEQUENCES IN A DICTIONARY
 seqs={}
