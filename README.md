@@ -1,1 +1,1 @@
-#Bioinformatic tools
+# Bioinformatics tools
