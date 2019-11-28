@@ -1,5 +1,7 @@
 #!/usr/bin/python3
-#Parse large FASTA files to TargetP software
+#Parse FASTA files containing large number of sequences (>100 seqs),
+#split the file into multiple files, run TargetP for each file generated
+#and create a unique final TargetP output.
 
 import sys
 import subprocess
