@@ -13,11 +13,9 @@
 #make
 #sudo make install
 
-
 reference=`echo "$1"`
 samfile=`echo "$2"`
 name=`echo "$samfile" | sed "s/.sam//g"`
-
 
 samtools faidx "$reference"  #creates index *.fai
 samtools view -bt "$reference".fai "$samfile" > "$name".bam
