@@ -18,6 +18,6 @@ with open(inputfasta,"r") as set1:
         else:
             output += 1
             countseq = 0
-            outfasta = open("SPfrag_"+str(output)+".fa","w")
+            outfasta = open(acronym_pre+str(output)+".fa","w")
         
         outfasta.write(">"+str(i.id)+"\n"+str(i.seq)+"\n")
