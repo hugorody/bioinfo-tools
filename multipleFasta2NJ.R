@@ -19,8 +19,7 @@ print (paste(infile))
 mytree <- read.phyDat(infile,format="fasta", type = "AA")
 dm <- dist.ml(mytree)
 treeNJ <- NJ(dm)
- 
-  
+
 #write tree
 write.tree(treeNJ, file=outfile) #fastafile.nwk
 }
