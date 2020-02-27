@@ -3,8 +3,7 @@
 
 library(ape)
 library(phangorn)
- 
-  
+
 myfiles <- list.files(path = "/path/to/msa/fasta/files/", pattern = NULL, all.files = FALSE,
            full.names = FALSE, recursive = FALSE,
            ignore.case = FALSE, include.dirs = FALSE, no.. = FALSE)
@@ -24,3 +23,4 @@ treeNJ <- NJ(dm)
   
 #write tree
 write.tree(treeNJ, file=outfile) #fastafile.nwk
+}
