@@ -10,5 +10,4 @@ output = open(fileFAS+".nucl2prot.fas","w")
 
 with open(fileFAS,"r") as set2:
     for i in SeqIO.parse(set2, "fasta"):
-        #print (i.format("fasta"))
-        output.write (">" + str(i.id) + "\n" + str(i.seq.translate()).replace("\*",""))
+        output.write(i.format("fasta"))
