@@ -6,8 +6,8 @@ import re
 
 ################################################################################
 # INPUT
-blastinput = "result.blast"
-fastainput = "file.fasta"
+blastinput = "/home/hugo/Dropbox/Esalq/references/TAIR11/Araport11_allvsall.blastp"
+fastainput = "/home/hugo/Dropbox/Esalq/references/TAIR11/Araport11_genes.201606.pep.fasta"
 
 ################################################################################
 # FILTER BLASTn RESULTS
@@ -48,9 +48,8 @@ g = {}
 with open(blastinput+".filtered","r") as set1:
     for i in set1:
         i = i.rstrip().split("\t")
-
-        subje = i[0] #use query as subject
-        query = i[1] #use subject as query
+        query = i[0]
+        subje = i[1]
 
         if query not in G:
             g[query] = [subje]
