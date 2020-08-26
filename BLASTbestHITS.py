@@ -11,7 +11,6 @@ with open(fastainput,"r") as set2:
     for i in SeqIO.parse(set2, "fasta"):
         seqsize[i.id] = len(str(i.seq))
 
-
 besthit = {}
 with open(blastinput,"r") as set1:
     for i in set1:
