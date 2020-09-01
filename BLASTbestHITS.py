@@ -45,4 +45,4 @@ print ("Mean align len:",np.mean(meanalignmen))
 
 output = open(blastinput + ".besthit","w")
 for i in besthit.items():
-    output.write(i[0] + "\t" + "\t".join(map(str,i[1])) + "\n")
+    output.write("\t".join(map(str,i[1])) + "\n")
