@@ -26,7 +26,7 @@ with open(blastinput,"r") as set1:
         evalu = float(i[10])
         bitscore = float(i[11])
 
-        if query != subje and cov >= 80.0:
+        if query != subje and ident >= 40.0 and cov >= 80.0:
 
             if query not in besthit:
                 besthit[query] = i
