@@ -37,8 +37,8 @@ with open(blastinput,"r") as set1:
 meanidentity = []
 meanalignmen = []
 for i in besthit.items():
-    meanidentity.append(i[1][2])
-    meanalignmen.append(i[1][3])
+    meanidentity.append(float(i[1][2]))
+    meanalignmen.append(float(i[1][3]))
 
 print ("Mean  identity:",np.mean(meanidentity))
 print ("Mean align len:",np.mean(meanalignmen))
