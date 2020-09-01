@@ -24,20 +24,21 @@ with open(blastinput,"r") as set1:
         endquery = int(i[7])
         cov = int(align * 100) / seqsize[query] #parameter given in % of query length
         evalu = float(i[10])
+        bitscore = float(i[11])
 
-        if query != subje:
+        if query != subje and cov >= 80.0:
 
             if query not in besthit:
-                besthit[query] = [subje,ident,align,cov,evalu]
+                besthit[query] = i
             else:
-                if ident >= besthit[query][1] and align > besthit[query][2] and cov > besthit[query][3]:
-                        besthit[query] = [subje,ident,align,cov,evalu]
+                if bitscore >= float(besthit[query][11]):
+                        besthit[query] = i
 
 meanidentity = []
 meanalignmen = []
 for i in besthit.items():
-    meanidentity.append(i[1][1])
-    meanalignmen.append(i[1][2])
+    meanidentity.append(i[1][2])
+    meanalignmen.append(i[1][3])
 
 print ("Mean  identity:",np.mean(meanidentity))
 print ("Mean align len:",np.mean(meanalignmen))
