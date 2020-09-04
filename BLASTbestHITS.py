@@ -3,13 +3,7 @@
 import numpy as np
 from Bio import SeqIO
 
-fastainput = "file.fas"
-blastinput = "blast_output.txt"
-
-seqsize = {}
-with open(fastainput,"r") as set2:
-    for i in SeqIO.parse(set2, "fasta"):
-        seqsize[i.id] = len(str(i.seq))
+blastinput = "blast_output.txt" # BLAST output format: -outfmt "6 std qcovs"
 
 besthit = {}
 with open(blastinput,"r") as set1:
@@ -22,9 +16,9 @@ with open(blastinput,"r") as set1:
         align = float(i[3])
         startquery = int(i[6])
         endquery = int(i[7])
-        cov = int(align * 100) / seqsize[query] #parameter given in % of query length
         evalu = float(i[10])
         bitscore = float(i[11])
+        cov = float(i[12])
 
         if query != subje and ident >= 40.0 and cov >= 80.0:
 
