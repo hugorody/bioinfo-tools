@@ -38,5 +38,6 @@ print ("Mean  identity:",np.mean(meanidentity))
 print ("Mean align len:",np.mean(meanalignmen))
 
 output = open(blastinput + ".besthit","w")
+output.write("qseqid\tsseqid\tpident\tlength\tmismatch\tgapopen\tqstart\tqend\tsstart\tsend\tevalue\tbitscore\tqcov\n")
 for i in besthit.items():
     output.write("\t".join(map(str,i[1])) + "\n")
