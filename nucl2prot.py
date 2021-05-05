@@ -6,8 +6,10 @@ from Bio import SeqIO
 
 fileFAS = sys.argv[1] #fasta file
 
-output = open(fileFAS+".nucl2prot.fas","w")
+output = open(fileFAS+".prot.fas","w")
 
 with open(fileFAS,"r") as set2:
     for i in SeqIO.parse(set2, "fasta"):
-        output.write(i.format("fasta"))
+        id = str(i.id)
+        seq = str(i.seq.translate())
+        output.write(">"+id+"\n"+seq+"\n")
