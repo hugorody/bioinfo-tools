@@ -5,7 +5,7 @@
 import networkx as nx
 
 #blastinput is the BLAST(p) output tabular format: -outfmt "6 std qcovs"
-blastinput = "/home/hugo/Dropbox/Esalq/references/Vicentinis/BLAST/compgg_vs_tair10.filtered.blastp"
+blastinput = "file.blastp"
 identity_cutoff = 30.0
 querycoverage_cutoff = 60.0
 
