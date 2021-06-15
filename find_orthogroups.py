@@ -1,14 +1,16 @@
 #!/usr/bin/python3
+# Uses tabular output format 6 of BLAST from all vs all searches to find
+# groups of orthologs
 
 import networkx as nx
 
-#BLASTp output format: -outfmt "6 std qcovs"
-blastinput = "file.blastp"
-identity_cutoff = 40.0
-querycoverage_cutoff = 80.0
+#blastinput is the BLAST(p) output tabular format: -outfmt "6 std qcovs"
+blastinput = "/home/hugo/Dropbox/Esalq/references/Vicentinis/BLAST/compgg_vs_tair10.filtered.blastp"
+identity_cutoff = 30.0
+querycoverage_cutoff = 60.0
 
-G = nx.Graph() # Define the graph and type directed
-
+# MODEL Directed GRAPH
+G = nx.DiGraph() # Define the graph and type directed
 with open(blastinput,"r") as set1:
     for i in set1:
         i = i.rstrip().split("\t")
@@ -33,9 +35,22 @@ with open(blastinput,"r") as set1:
                             identity = ident,
                             coverage = qcov)
 
+
+# REMOVE ALL NON-RECIPROCAL EDGES
+edges_to_remove = {}
+for u,v in G.edges: #iterate all edges
+    if not G.has_edge(v,u): #verify if edge has not its reciprocal
+        edges_to_remove[u] = v
+
+for i in edges_to_remove.items():
+    G.remove_edge(i[0],i[1]) #if not then remove edge
+    print ("Removing edge",i[0],i[1])
+
+# EXPORT GRAPH
 #export_graphml = nx.write_graphml(G, "orthogroups.xml")
 
 # EXPORT ORTHOGROUPS AS THE CONNECTED COMPONENTS
+G = G.to_undirected()
 out = open("orthogroups.txt","w")
 count = 0
 for i in nx.connected_components(G):
